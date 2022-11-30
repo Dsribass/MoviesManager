@@ -1,4 +1,4 @@
-package com.example.moviesmanager.domain.model
+package com.example.moviesmanager.model
 
 enum class Genre {
     ACTION,
