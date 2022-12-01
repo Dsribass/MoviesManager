@@ -6,7 +6,7 @@ import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
 
 @Dao
-interface MovieDAO {
+interface MovieDao {
     @Query("SELECT * FROM ${MovieEntity.TABLE_NAME}")
     fun getMovieList(): Observable<List<MovieEntity>>
 

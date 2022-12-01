@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.moviesmanager.model.Genre
 import com.example.moviesmanager.model.Movie
+import java.time.LocalDate
 import java.util.*
 
 @Entity(tableName = MovieEntity.TABLE_NAME)
@@ -15,7 +16,7 @@ data class MovieEntity(
     @ColumnInfo(name = NAME)
     val name: String,
     @ColumnInfo(name = RELEASE_DATE)
-    val releaseDate: Date,
+    val releaseDate: String,
     @ColumnInfo(name = STUDIO)
     val studio: String,
     @ColumnInfo(name = DURATION)
@@ -39,7 +40,7 @@ data class MovieEntity(
             return MovieEntity(
                 id = movie.id.toString(),
                 name = movie.name,
-                releaseDate = movie.releaseDate,
+                releaseDate = movie.releaseDate.toString(),
                 studio = movie.studio,
                 duration = movie.duration,
                 genre = movie.genre.toString(),
@@ -52,7 +53,7 @@ data class MovieEntity(
         return Movie(
             id = UUID.fromString(id),
             name = name,
-            releaseDate = releaseDate,
+            releaseDate = LocalDate.parse(releaseDate),
             studio = studio,
             duration = duration,
             genre = Genre.valueOf(genre),

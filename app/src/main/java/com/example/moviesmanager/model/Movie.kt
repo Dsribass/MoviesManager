@@ -1,11 +1,12 @@
 package com.example.moviesmanager.model
 
+import java.time.LocalDate
 import java.util.*
 
 data class Movie(
     val id: UUID,
     val name: String,
-    val releaseDate: Date,
+    val releaseDate: LocalDate,
     val studio: String,
     val duration: Int,
     val genre: Genre,
