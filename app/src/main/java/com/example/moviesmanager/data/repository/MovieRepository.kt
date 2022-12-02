@@ -8,8 +8,8 @@ import java.util.UUID
 
 interface MovieRepository {
     fun getMovieList(): Observable<List<Movie>>
-//    fun getMovie(id: UUID): Single<Movie>
+    fun getMovie(id: UUID): Single<Movie>
     fun addMovie(movie: Movie): Completable
-//    fun updateMovie(movie: Movie): Completable
-//    fun removeMovie(id: UUID): Completable
+    fun updateMovie(movie: Movie): Completable
+    fun removeMovie(id: UUID): Completable
 }
