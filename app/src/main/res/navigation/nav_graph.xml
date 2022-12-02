@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/FirstFragment"
         android:name="com.example.moviesmanager.presentation.movies.views.MovieListFragment"
-        android:label="@string/first_fragment_label"
+        android:label="@string/movie_list_label"
         tools:layout="@layout/fragment_movie_list">
 
         <action
@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.example.moviesmanager.presentation.movies.views.MovieDetailFragment"
-        android:label="@string/second_fragment_label"
+        android:label="@string/movie_detail_label"
         tools:layout="@layout/fragment_movie_detail">
 
         <action
