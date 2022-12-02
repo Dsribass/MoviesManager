@@ -8,4 +8,8 @@
     <string name="movie_list_title">Lista de Filmes</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="movie_item_title_placeholder">Placeholder</string>
+    <string name="movie_detail_studio_label">Estudio:</string>
+    <string name="movie_detail_release_date_label">Lançamento:</string>
+    <string name="movie_detail_duration_label">Duração:</string>
+    <string name="movie_detail_genre_label">Gênero:</string>
 </resources>

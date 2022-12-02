@@ -8,7 +8,6 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.moviesmanager.R
 import com.example.moviesmanager.databinding.ActivityMoviesBinding
-import com.google.android.material.snackbar.Snackbar
 
 class MoviesActivity : AppCompatActivity() {
 
