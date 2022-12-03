@@ -19,6 +19,9 @@
             app:destination="@id/AddMovieFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_MovieListFragment_to_editMovieFragment"
+            app:destination="@id/EditMovieFragment" />
     </fragment>
     <fragment
         android:id="@+id/MovieDetailFragment"
@@ -30,4 +33,13 @@
         android:name="com.example.moviesmanager.presentation.movies.views.AddMovieFragment"
         android:label="fragment_add_movie"
         tools:layout="@layout/fragment_add_movie" />
+    <dialog
+        android:id="@+id/EditMovieFragment"
+        android:name="com.example.moviesmanager.presentation.movies.views.EditMovieFragment"
+        android:label="fragment_edit_movie"
+        tools:layout="@layout/fragment_edit_movie" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </dialog>
 </navigation>
