@@ -28,6 +28,7 @@ class MovieRepositoryImpl(private val dao: MovieDao) : MovieRepository {
     }
 
     override fun removeMovie(id: UUID): Completable {
-        return getMovie(id).flatMapCompletable { dao.deleteMovie(MovieEntity.fromModel(it)) }
+        return dao.getMovie(id.toString())
+            .flatMapCompletable { dao.deleteMovie(it) }
     }
 }

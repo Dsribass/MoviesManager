@@ -35,6 +35,8 @@ class MovieListFragment : Fragment() {
     private val movieList = mutableListOf<Movie>()
 
     private val onTapItemSubject = PublishSubject.create<UUID>()
+    private val onDeleteSubject = PublishSubject.create<UUID>()
+    private val onEditSubject = PublishSubject.create<UUID>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -82,6 +84,20 @@ class MovieListFragment : Fragment() {
                         R.id.action_FirstFragment_to_SecondFragment,
                         bundle
                     )
+                },
+            onDeleteSubject
+                .subscribe {
+                    repository.removeMovie(it).subscribe()
+                },
+            onEditSubject
+                .subscribe {
+                    val bundle = Bundle().apply {
+                        putString("id", it.toString())
+                    }
+                    findNavController().navigate(
+                        R.id.action_MovieListFragment_to_editMovieFragment,
+                        bundle
+                    )
                 }
         )
 
@@ -93,7 +109,9 @@ class MovieListFragment : Fragment() {
     private fun setupMovieListView() {
         binding.movieListView.adapter = MovieListAdapter(
             movies = movieList,
-            onClick = { onTapItemSubject.onNext(it) }
+            onClick = { onTapItemSubject.onNext(it) },
+            onEdit = { onEditSubject.onNext(it) },
+            onDelete = { onDeleteSubject.onNext(it) },
         )
         binding.movieListView.layoutManager = LinearLayoutManager(binding.root.context)
     }
