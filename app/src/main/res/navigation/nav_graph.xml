@@ -14,15 +14,20 @@
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/MovieDetailFragment" />
+        <action
+            android:id="@+id/action_MovieListFragment_to_addMovieFragment"
+            app:destination="@id/AddMovieFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/MovieDetailFragment"
         android:name="com.example.moviesmanager.presentation.movies.views.MovieDetailFragment"
         android:label="@string/movie_detail_label"
-        tools:layout="@layout/fragment_movie_detail">
-
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/MovieListFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_movie_detail"/>
+    <dialog
+        android:id="@+id/AddMovieFragment"
+        android:name="com.example.moviesmanager.presentation.movies.views.AddMovieFragment"
+        android:label="fragment_add_movie"
+        tools:layout="@layout/fragment_add_movie" />
 </navigation>

@@ -12,4 +12,11 @@
     <string name="movie_detail_release_date_label">Lançamento:</string>
     <string name="movie_detail_duration_label">Duração:</string>
     <string name="movie_detail_genre_label">Gênero:</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_movie_name_hint">Filme</string>
+    <string name="add_movie_release_date_hint">Lançamento (yyyy-mm-dd)</string>
+    <string name="add_movie_studio_hint">Estúdio/Produtora</string>
+    <string name="add_movie_duration_hint">Duração</string>
+    <string name="add_movie_button_label">Adicionar</string>
 </resources>

@@ -54,13 +54,11 @@ class MovieListFragment : Fragment() {
     private fun setupObservables() {
         repository
             .getMovieList()
-            .observeOn(Schedulers.io())
-            .subscribeOn(AndroidSchedulers.mainThread())
             .subscribe(onMovieListSubject)
 
         disposables.addAll(
             onMovieList
-                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                     {
                         movieList.clear()
@@ -77,14 +75,19 @@ class MovieListFragment : Fragment() {
                 ),
             onTapItemSubject
                 .subscribe {
-                    val bundle = Bundle()
-                    bundle.putString("id", it.toString())
+                    val bundle = Bundle().apply {
+                        putString("id", it.toString())
+                    }
                     findNavController().navigate(
                         R.id.action_FirstFragment_to_SecondFragment,
                         bundle
                     )
                 }
         )
+
+        binding.addNewMovie.setOnClickListener {
+            findNavController().navigate(R.id.action_MovieListFragment_to_addMovieFragment)
+        }
     }
 
     private fun setupMovieListView() {
