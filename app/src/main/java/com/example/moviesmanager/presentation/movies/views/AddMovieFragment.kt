@@ -20,6 +20,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.kotlin.addTo
 import io.reactivex.rxjava3.subjects.BehaviorSubject
 import java.time.LocalDate
 import java.util.*
@@ -55,46 +56,45 @@ class AddMovieFragment : BottomSheetDialogFragment() {
     }
 
     private fun setupObservables() {
-        disposables.add(
-            Observable.combineLatest(
-                onNameChangedSubject,
-                onStudioChangedSubject,
-                onDurationChangedSubject,
-                onReleaseDateChangedSubject,
-                onGenreSubject
-            ) { t1, t2, t3, t4, t5 ->
-                t1.isNotEmpty() &&
-                        t2.isNotEmpty() &&
-                        t3.isNotEmpty() &&
-                        t4.isNotEmpty() &&
-                        t5.isNotEmpty()
-            }
-                .subscribeOn(AndroidSchedulers.mainThread())
-                .subscribe { binding.form.addMovieButton.isEnabled = it }
-        )
+        Observable.combineLatest(
+            onNameChangedSubject,
+            onStudioChangedSubject,
+            onDurationChangedSubject,
+            onReleaseDateChangedSubject,
+            onGenreSubject
+        ) { t1, t2, t3, t4, t5 ->
+            t1.isNotEmpty() &&
+                    t2.isNotEmpty() &&
+                    t3.isNotEmpty() &&
+                    t4.isNotEmpty() &&
+                    t5.isNotEmpty()
+        }
+            .subscribeOn(AndroidSchedulers.mainThread())
+            .subscribe { binding.form.addMovieButton.isEnabled = it }
+            .addTo(disposables)
 
-        disposables.add(
-            onAddButtonSubject
-                .map {
-                    with(binding.form) {
-                        Movie(
-                            id = UUID.randomUUID(),
-                            name = addMovieName.text.toString(),
-                            studio = addMovieStudio.text.toString(),
-                            duration = addMovieDuration.text.toString().toInt(),
-                            releaseDate = LocalDate.parse(addMovieReleaseDate.text.toString()),
-                            genre = Genre.valueOf(addMovieGenres.selectedItem.toString()),
-                            rate = null,
-                        )
-                    }
+        onAddButtonSubject
+            .map {
+                with(binding.form) {
+                    Movie(
+                        id = UUID.randomUUID(),
+                        name = addMovieName.text.toString(),
+                        studio = addMovieStudio.text.toString(),
+                        duration = addMovieDuration.text.toString().toInt(),
+                        releaseDate = LocalDate.parse(addMovieReleaseDate.text.toString()),
+                        genre = Genre.valueOf(addMovieGenres.selectedItem.toString()),
+                        rate = null,
+                    )
                 }
-                .subscribe {
-                    repository.addMovie(it)
-                        .subscribe {
-                            findNavController().popBackStack()
-                        }
-                },
-        )
+            }
+            .subscribe {
+                repository.addMovie(it)
+                    .subscribe {
+                        findNavController().popBackStack()
+                    }
+                    .addTo(disposables)
+            }
+            .addTo(disposables)
     }
 
     private fun generalSetup() {
