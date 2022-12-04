@@ -21,4 +21,11 @@
     <string name="add_movie_button_label">Adicionar</string>
     <string name="menu_edit_item">Editar</string>
     <string name="menu_delete_item">Deletar</string>
+    <string name="rate_movie_button_label">Avaliar</string>
+    <string name="confirm">Confirmar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="rate">Avaliação</string>
+    <string name="rate_movie_hint">Nota</string>
+    <string name="movie_detail_rate_label">Avaliação:</string>
+    <string name="movie_detail_watched_label">Ja assistido!</string>
 </resources>

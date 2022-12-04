@@ -123,4 +123,56 @@
             android:textSize="16sp" />
     </LinearLayout>
 
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="32dp" />
+
+    <LinearLayout
+        android:id="@+id/movie_detail_rate_content"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/movie_detail_watched_label"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/movie_detail_rate_label"
+                android:textSize="16sp" />
+
+            <Space
+                android:layout_width="4dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/movie_detail_rate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@tools:sample/lorem[0]"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/rate_movie_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/rate_movie_button_label" />
+
 </LinearLayout>
